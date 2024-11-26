@@ -12,17 +12,15 @@ import (
 func Circle(cx, cy, rx, ry int) (Points, Points) {
 
 	ps := Points{}
-	s := 0.0
-	if 360 <= (math.Max(float64(rx), float64(ry)) * 2 * 3.14) {
-		s = 1
-	} else {
+	s := 1.0
+	if 360 < (math.Max(float64(rx), float64(ry)) * 2 * 3.14) {
 		s = 360 / (math.Max(float64(rx), float64(ry)) * 2 * 3.14)
 	}
 
 	m := make(map[string]interface{})
 	for i := 0.0; i <= 90; i += s {
-		x := float64(rx) * math.Cos(float64(i)*3.14/180)
-		y := float64(ry) * math.Sin(float64(i)*3.14/180)
+		x := float64(rx) * math.Cos(i*3.14/180)
+		y := float64(ry) * math.Sin(i*3.14/180)
 		ps = append(ps, Point{X: cx - int(x), Y: cy - int(y)}) // 0 to 90 degrees
 		ps = append(ps, Point{X: cx + int(x), Y: cy - int(y)}) // 90 to 180 degrees
 		ps = append(ps, Point{X: cx + int(x), Y: cy + int(y)}) // 180 to 270 degrees
