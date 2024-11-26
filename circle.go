@@ -93,7 +93,7 @@ func Circle2(cx, cy, rx, ry int) (Points, Points) {
 // The calculation method is same as `Circle`.
 func Circled(cx, cy, rx, ry, s int) Points {
 	ps := Points{}
-	ds := 0.0
+	ds := float64(s)
 	if s <= 1 {
 		if 360 <= (math.Max(float64(rx), float64(ry)) * 2 * 3.14) {
 			ds = 1
