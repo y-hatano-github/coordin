@@ -1,6 +1,8 @@
 package coordin
 
 // BCurve returns the coordinates of Bézier curve.
+// The first and last indices of the first parameter(Points) are endpoints, and the others are control points.
+// The second parameter(float64) is curvature.
 func BCurve(ps Points, t float64) Points {
 
 	var cps *Points = &Points{}
