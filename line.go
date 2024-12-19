@@ -93,6 +93,7 @@ func Rect(p1 Point, p2 Point) (Points, Points) {
 }
 
 // Polyline returns coordinates connecting the given points with a line.
+// There is no line connecting the last point and the first point.
 func Polyline(ps Points) Points {
 	pl := Points{}
 
