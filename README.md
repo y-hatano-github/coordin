@@ -1,6 +1,6 @@
 # Coordin
-Coordin is Go lang liblary for providing coordinates points for shapes such as circles and lines and so on.  
-This library will support drawing shapes on the terminal.
+`Coordin` is a Golang library that helps you draw shapes in the terminal.  
+This library provide coordinates points for shapes such as circles and lines and so on.  
 
 ## Installation
 ```
