@@ -14,7 +14,6 @@ func main() {
 		}
 	}
 
-	///ps, fps := c.Polygon(c.Points{{X: 2, Y: 2}, {X: 11, Y: 11}, {X: 2, Y: 11}, {X: 11, Y: 2}})
 	lp, fp := c.Polygon(c.Points{
 		{X: 12, Y: 2},
 		{X: 16, Y: 6},
