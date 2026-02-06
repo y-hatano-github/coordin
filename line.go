@@ -3,6 +3,7 @@ package coordin
 import (
 	"fmt"
 	"math"
+	"sort"
 )
 
 // Line returns the coordinates of a line between two points.
@@ -124,20 +125,47 @@ func Polygon(ps Points) (Points, Points) {
 		y = y + p.Y
 	}
 
-	var fp *Points = &Points{}
-	fillp(int(x/(len(ps)-1)), int(y/(len(ps)-1)), m, fp)
-
-	return pl, *fp
+	fp := fillp(ps)
+	return pl, fp
 }
 
 // fillp is a function that calculates data for fill.
-func fillp(x, y int, m map[string]interface{}, fp *Points) {
-	if _, ok := m[fmt.Sprintf("%d,%d", x, y)]; !ok {
-		m[fmt.Sprintf("%d,%d", x, y)] = ""
-		*fp = append(*fp, Point{X: x, Y: y})
-		fillp(x, y-1, m, fp)
-		fillp(x, y+1, m, fp)
-		fillp(x-1, y, m, fp)
-		fillp(x+1, y, m, fp)
+func fillp(ps Points) Points {
+	rp := Points{}
+
+	ymin, ymax := ps[0].Y, ps[0].X
+	for _, v := range ps {
+		if v.Y < ymin {
+			ymin = v.Y
+		}
+		if v.X > ymax {
+			ymax = v.X
+		}
 	}
+
+	for sy := ymin; sy <= ymax; sy++ {
+		var xs []int
+
+		for i := 0; i < len(ps); i++ {
+			j := (i + 1) % len(ps)
+
+			y1, y2 := ps[i].Y, ps[j].Y
+			x1, x2 := ps[i].X, ps[j].X
+
+			if (y1 <= sy && y2 > sy) || (y2 <= sy && y1 > sy) {
+				ix := x1 + (sy-y1)*(x2-x1)/(y2-y1)
+				xs = append(xs, ix)
+			}
+		}
+
+		sort.Ints(xs)
+
+		for i := 0; i+1 < len(xs); i += 2 {
+			for sx := xs[i]; sx <= xs[i+1]; sx++ {
+				rp = append(rp, Point{X: sx, Y: sy})
+			}
+		}
+	}
+
+	return rp
 }
