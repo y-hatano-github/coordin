@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	c "github.com/y-hatano-github/coordin"
+	c "github.com/yoshihicode/coordin"
 )
 
 func main() {

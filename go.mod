@@ -1,3 +1,3 @@
-module github.com/y-hatano-github/coordin
+module github.com/yoshihicode/coordin
 
 go 1.22.2

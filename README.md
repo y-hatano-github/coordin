@@ -4,7 +4,7 @@ This library provide coordinates points for shapes such as circles and lines and
 
 ## Installation
 ```
-go get github.com/y-hatano-github/coordin
+go get github.com/yoshihicode/coordin
 ```
 
 ## Examples

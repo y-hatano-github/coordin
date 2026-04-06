@@ -1,1 +1,1 @@
-see [go-clock](https://github.com/y-hatano-github/go-clock)
+see [go-clock](https://github.com/yoshihicode/go-clock)
