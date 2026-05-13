@@ -86,7 +86,7 @@ func Rect(p1 Point, p2 Point) (Points, Points) {
 
 	fp := Points{}
 	for x := minX + 1; x < math.Abs(float64(p1.X-p2.X)); x++ {
-		for y := minY + 1; x < math.Abs(float64(p1.Y-p2.Y)); y++ {
+		for y := minY + 1; y < math.Abs(float64(p1.Y-p2.Y)); y++ {
 			fp = append(fp, Point{X: int(x), Y: int(y)})
 		}
 	}
@@ -133,13 +133,13 @@ func Polygon(ps Points) (Points, Points) {
 func fillp(ps Points) Points {
 	rp := Points{}
 
-	ymin, ymax := ps[0].Y, ps[0].X
+	ymin, ymax := ps[0].Y, ps[0].Y
 	for _, v := range ps {
 		if v.Y < ymin {
 			ymin = v.Y
 		}
-		if v.X > ymax {
-			ymax = v.X
+		if v.Y > ymax {
+			ymax = v.Y
 		}
 	}
 
