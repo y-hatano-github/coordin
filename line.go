@@ -1,7 +1,6 @@
 package coordin
 
 import (
-	"fmt"
 	"math"
 	"sort"
 )
@@ -114,16 +113,6 @@ func Polygon(ps Points) (Points, Points) {
 		pl = append(pl, Line(Point{ps[i].X, ps[i].Y}, Point{ps[i+1].X, ps[i+1].Y})...)
 	}
 	pl = append(pl, Line(Point{ps[len(ps)-1].X, ps[len(ps)-1].Y}, Point{ps[0].X, ps[0].Y})...)
-
-	m := make(map[string]interface{})
-	for _, p := range pl {
-		m[fmt.Sprintf("%d,%d", p.X, p.Y)] = ""
-	}
-	var x, y int
-	for _, p := range ps {
-		x = x + p.X
-		y = y + p.Y
-	}
 
 	fp := fillp(ps)
 	return pl, fp
